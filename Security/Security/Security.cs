@@ -25,7 +25,7 @@ namespace Security
                 m_onHackDetectListener.Invoke(message);
         }
 
-        static public void SetOnErrorlistener(Action<string> l)
+        static public void SetOnErrorListener(Action<string> l)
         {
             m_onErrorListener = l;
         }

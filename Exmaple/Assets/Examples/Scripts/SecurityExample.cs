@@ -3,14 +3,18 @@ using Security;
 
 public class SecurityExample : MonoBehaviour
 {
-    public Int32 Cash;
     public Int32 Gold { get; private set; }
 
+    public Int32 Cash;
+    
     private Boolean _isClear;
 
     // Start is called before the first frame update
     void Start()
     {
+        SecurityListener.SetOnHackDetectListener(OnHackDetected);
+        SecurityListener.SetOnErrorListener(OnError);
+
         Gold = new Int32(8801);
 
         Cash = new Int32();
@@ -30,4 +34,19 @@ public class SecurityExample : MonoBehaviour
         // implicit conversions: Security.Boolean to System.Boolean (bool)
         return _isClear;
     }
+
+    #region Listener
+
+    public void OnHackDetected(string message)
+    {
+        Debug.LogError(string.Format("OnHackDetected(string) {0}", message));
+        Application.Quit();
+    }
+
+    public void OnError(string error)
+    {
+        Debug.LogError(string.Format("OnError(string) {0}", error));
+    }
+
+    #endregion Listener
 }
