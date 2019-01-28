@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using Security;
 
-public class Example : MonoBehaviour
+public class SecurityExample : MonoBehaviour
 {
     public Int32 Cash;
     public Int32 Gold { get; private set; }
